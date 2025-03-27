@@ -1,0 +1,36 @@
+# Global LLM configuration
+[llm]
+model = "anthropic/claude-3.7-sonnet"      # Correct model name for OpenRouter integration
+api_type = "openai"                        # Using OpenAI compatible client
+base_url = "https://openrouter.ai/api/v1"  # Correct base URL for OpenRouter
+api_key = "YOUR_API_KEY"                  # Replace with your own API key
+max_tokens = 4000                          # Conservative token limit
+temperature = 0.0                          # Zero temperature for deterministic outputs
+api_version = "2023-05-15"                 # Default API version
+
+# Extended thinking mode parameters
+extended_thinking = false  # Disabled by default
+thinking_budget = 1024     # Limited token budget for reasoning when enabled
+
+# Fallback LLM configuration (if needed)
+[llm.fallback]
+model = "gpt-4o"  # OpenAI model as fallback
+api_type = "openai"
+base_url = "https://api.openai.com/v1"
+api_key = "YOUR_OPENAI_API_KEY"  # Replace with your own API key
+max_tokens = 2000  # Smaller token limit to ensure compatibility
+temperature = 0.0
+api_version = "2023-05-15"
+
+# Browser configuration
+[browser]
+headless = false
+disable_security = true
+cdp_url = "http://localhost:9222"  # Connect to our running Chrome instance
+
+# Search settings
+[search]
+engine = "Google"
+fallback_engines = ["DuckDuckGo"]
+retry_delay = 60
+max_retries = 3
